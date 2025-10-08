@@ -3,273 +3,323 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karthick Kumar M | Junior AI/ML Developer</title>
+  <title>Karthick Kumar M - Futuristic Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
-      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #fff;
-      min-height: 100vh;
-      animation: gradientShift 10s infinite alternate ease-in-out;
+      overflow-x: hidden;
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite alternate;
     }
 
     @keyframes gradientShift {
-      0% { background: linear-gradient(120deg, #0f2027, #203a43, #2c5364); }
-      50% { background: linear-gradient(120deg, #3a1c71, #d76d77, #ffaf7b); }
-      100% { background: linear-gradient(120deg, #0f0c29, #302b63, #24243e); }
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
-    /* NAVIGATION */
-    nav {
-      position: sticky;
+    header {
+      position: fixed;
       top: 0;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
+      left: 0;
+      width: 100%;
+      backdrop-filter: blur(15px);
+      background: rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      z-index: 1000;
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 40px;
       padding: 15px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     nav a {
-      color: #fff;
       text-decoration: none;
-      font-weight: 500;
+      color: #fff;
+      font-weight: 600;
       position: relative;
-      transition: 0.4s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
     }
 
     nav a::after {
       content: '';
       position: absolute;
-      left: 0;
+      width: 0%;
+      height: 3px;
       bottom: -5px;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
-      transition: width 0.4s;
+      left: 0;
+      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      transition: width 0.4s ease;
+      border-radius: 2px;
+    }
+
+    nav a:hover {
+      color: #00f5ff;
     }
 
     nav a:hover::after {
       width: 100%;
     }
 
-    nav a:hover {
-      color: #00eaff;
-    }
-
-    /* CONTAINER */
-    .resume-box {
-      max-width: 1000px;
-      margin: 50px auto;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 40px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      animation: fadeIn 1.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* HEADER */
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .header h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      background: linear-gradient(90deg, #00c6ff, #0072ff, #00ffcc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: textGlow 4s infinite alternate;
-    }
-
-    @keyframes textGlow {
-      0% { text-shadow: 0 0 10px #00c6ff; }
-      100% { text-shadow: 0 0 25px #00eaff; }
-    }
-
-    .header h3 {
-      color: #ddd;
-      font-weight: 400;
-    }
-
-    /* SECTIONS */
     section {
-      margin-bottom: 40px;
+      padding: 120px 10% 70px;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1.2s ease;
     }
 
-    section h2 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1, h2 {
+      background: linear-gradient(90deg, #00f5ff, #ff00cc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 25px;
+      margin-top: 25px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       position: relative;
-      letter-spacing: 1px;
+      overflow: hidden;
+      transform-style: preserve-3d;
     }
 
-    section h2::after {
-      content: '';
+    .card::before {
+      content: "";
       position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg, transparent, rgba(0,255,255,0.2), transparent 30%);
+      animation: rotateGlow 6s linear infinite;
+      z-index: 0;
     }
 
-    section p {
-      color: #eee;
+    @keyframes rotateGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 40px rgba(0,255,255,0.3);
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin: 8px 0;
       line-height: 1.6;
-      margin-bottom: 10px;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.3);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
     }
 
-    .tag {
-      background: linear-gradient(135deg, #00c6ff, #0072ff);
-      padding: 8px 15px;
-      border-radius: 25px;
-      font-size: 0.9em;
-      box-shadow: 0 0 8px rgba(0, 200, 255, 0.3);
-      transition: transform 0.3s ease;
+    /* Floating glowing particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0,255,255,0.4);
+      animation: floatParticle 12s linear infinite;
     }
 
-    .tag:hover {
-      transform: scale(1.1);
+    @keyframes floatParticle {
+      0% { transform: translateY(0) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1); opacity: 0; }
     }
 
     @media (max-width: 768px) {
-      .resume-box {
-        padding: 25px;
-      }
-
-      .header h1 {
-        font-size: 2rem;
-      }
-
-      nav {
-        flex-wrap: wrap;
-        gap: 15px;
-      }
+      nav { flex-wrap: wrap; gap: 20px; }
+      section { padding: 90px 6% 50px; }
     }
   </style>
 </head>
-
 <body>
-  <!-- NAV MENU -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#languages">Languages</a>
-    <a href="#hobbies">Hobbies</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
-  <div class="resume-box">
-    <div class="header">
-      <h1>KARTHICK KUMAR M</h1>
-      <h3>Junior AI/ML Developer | Former Annotation Quality Analyst</h3>
+  <!-- Floating glowing particles -->
+  <script>
+    for(let i=0; i<30; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.width = `${Math.random()*6+4}px`;
+      particle.style.height = particle.style.width;
+      particle.style.left = `${Math.random()*100}%`;
+      particle.style.bottom = `-${Math.random()*50}px`;
+      particle.style.animationDelay = `${Math.random()*10}s`;
+      document.body.appendChild(particle);
+    }
+  </script>
+
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#languages">Languages</a>
+      <a href="#hobbies">Hobbies</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h1>KARTHICK KUMAR M</h1>
+    <h3>Junior AI/ML Developer | Former Annotation Quality Analyst</h3>
+    <div class="card">
+      <p>
+        A thorough and well-organized person seeking a project management position. Skilled in data analysis, creative problem-solving, and innovation. Eager to learn and contribute to AI-powered solutions.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>CONTACT</h2>
+    <div class="card">
+      <p>📞 91-9789614136</p>
+      <p>✉️ kumarkarthim15@gmail.com</p>
+      <p>🏠 1/397, East Varappalayam, Karur - 639 113</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>SKILLS</h2>
+    <div class="card">
+      <ul>
+        <li>Java</li>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>C</li>
+        <li>AI/ML Data Annotation</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>EDUCATION</h2>
+    <div class="card">
+      <p><strong>B.Tech - Information Technology</strong><br>VSB Engineering College, Karur (2016-2020)</p>
+      <p><strong>HSC</strong> - Bharani Park Matric Hr. Sec. School (2015-2016)</p>
+      <p><strong>SSLC</strong> - GHS N.Pudur, Karur (2013-2014)</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>WORK EXPERIENCE</h2>
+    <div class="card">
+      <h3>Senior Analyst — Objectways Technologies (2 Years)</h3>
+      <ul>
+        <li>Annotated images, videos, and text using internal tools.</li>
+        <li>Created 2D & 3D labels using LiDAR data for ADAS systems.</li>
+        <li>Used CVAT, AWS, and Kognic tools.</li>
+      </ul>
     </div>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>ABOUT</h2>
-      <p>
-        A well-organized and analytical professional transitioning from Annotation Quality Analyst 
-        to Junior AI/ML Developer. Skilled in data analysis, labeling, and model training. 
-        Passionate about machine learning, creative problem-solving, and delivering intelligent automation.
-      </p>
-    </section>
+    <div class="card">
+      <h3>Annotation Quality Analyst — Telus Digital (Dec 2023 - Present)</h3>
+      <ul>
+        <li>Performed QA on datasets for ML pipelines.</li>
+        <li>Collaborated with engineers to improve accuracy.</li>
+        <li>Ensured high-fidelity scalable data annotation.</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <h2>SKILLS</h2>
-      <div class="tags">
-        <div class="tag">C</div>
-        <div class="tag">Java</div>
-        <div class="tag">Python</div>
-        <div class="tag">SQL</div>
-      </div>
-    </section>
+  <section id="languages">
+    <h2>LANGUAGES</h2>
+    <div class="card">
+      <p>Tamil</p>
+      <p>English</p>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2>WORK EXPERIENCE</h2>
-      <p><strong>Senior Analyst – Objectways Technologies</strong> | 2 Years</p>
-      <p>
-        Enhanced deep learning model accuracy through precise annotation using CVAT & LiDAR tools 
-        for ADAS systems. Mentored new hires, maintained data quality, and collaborated with AWS, Kognic, Alegion, and Luna.
-      </p>
+  <section id="hobbies">
+    <h2>HOBBIES</h2>
+    <div class="card">
+      <ul>
+        <li>Game Development</li>
+        <li>Animation and Drawing</li>
+        <li>Swimming</li>
+      </ul>
+    </div>
+  </section>
 
-      <p><strong>Annotation Quality Analyst – Telus Digital</strong> | Dec 2023 – Present</p>
-      <p>
-        Ensuring high-fidelity annotated datasets for AI/ML pipelines. Conducting QA across image, text, and video data. 
-        Partnering with data scientists to improve labeling standards and training accuracy.
-      </p>
-    </section>
+  <footer>
+    <p>© 2025 Karthick Kumar M | Designed with 💙 HTML, CSS & Animation</p>
+  </footer>
 
-    <!-- EDUCATION -->
-    <section id="education">
-      <h2>EDUCATION</h2>
-      <p><strong>B.Tech – Information Technology</strong>, VSB Engineering College, Karur (2016–2020)</p>
-      <p><strong>HSC</strong>, Bharani Park Matriculation Higher Secondary School (2015–2016)</p>
-      <p><strong>SSLC</strong>, GHS N. Pudur, Karur (2013–2014)</p>
-    </section>
+  <!-- Scroll + 3D Card Tilt Scripts -->
+  <script>
+    // Scroll fade animation
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < triggerBottom) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
 
-    <!-- LANGUAGES -->
-    <section id="languages">
-      <h2>LANGUAGES</h2>
-      <div class="tags">
-        <div class="tag">Tamil</div>
-        <div class="tag">English</div>
-      </div>
-    </section>
-
-    <!-- HOBBIES -->
-    <section id="hobbies">
-      <h2>HOBBIES</h2>
-      <div class="tags">
-        <div class="tag">Game Development</div>
-        <div class="tag">Animation & Drawing</div>
-        <div class="tag">Swimming</div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>CONTACT</h2>
-      <p>📞 91-9789614136</p>
-      <p>📧 kumarkarthim15@gmail.com</p>
-      <p>🏠 1/397, East Varappalayam, Kadamban Kurichi Post, Karur - 639 113</p>
-    </section>
-  </div>
+    // 3D Tilt effect
+    document.querySelectorAll(".card").forEach(card => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rotateX = (y / rect.height - 0.5) * 15;
+        const rotateY = (x / rect.width - 0.5) * -15;
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+      });
+    });
+  </script>
 </body>
 </html>
