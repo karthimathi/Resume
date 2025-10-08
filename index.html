@@ -6,189 +6,270 @@
   <title>Karthick Kumar M | Junior AI/ML Developer</title>
 
   <style>
-    /* Global Style */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      scroll-behavior: smooth;
       font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
       color: #fff;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 40px 20px;
+      animation: gradientShift 10s infinite alternate ease-in-out;
     }
 
-    .resume-container {
-      max-width: 1000px;
+    @keyframes gradientShift {
+      0% { background: linear-gradient(120deg, #0f2027, #203a43, #2c5364); }
+      50% { background: linear-gradient(120deg, #3a1c71, #d76d77, #ffaf7b); }
+      100% { background: linear-gradient(120deg, #0f0c29, #302b63, #24243e); }
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: 0.4s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      transition: width 0.4s;
+    }
+
+    nav a:hover::after {
       width: 100%;
+    }
+
+    nav a:hover {
+      color: #00eaff;
+    }
+
+    /* CONTAINER */
+    .resume-box {
+      max-width: 1000px;
+      margin: 50px auto;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-      backdrop-filter: blur(15px);
       padding: 40px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       animation: fadeIn 1.5s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* HEADER */
     .header {
       text-align: center;
       margin-bottom: 30px;
     }
 
     .header h1 {
-      font-size: 2.2em;
-      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      font-size: 2.5rem;
+      font-weight: 600;
+      background: linear-gradient(90deg, #00c6ff, #0072ff, #00ffcc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: textGlow 4s infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% { text-shadow: 0 0 10px #00c6ff; }
+      100% { text-shadow: 0 0 25px #00eaff; }
     }
 
     .header h3 {
-      color: #ccc;
+      color: #ddd;
       font-weight: 400;
-      letter-spacing: 1px;
     }
 
-    .section {
-      margin-bottom: 30px;
+    /* SECTIONS */
+    section {
+      margin-bottom: 40px;
     }
 
-    .section h2 {
+    section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
       background: linear-gradient(90deg, #ff9a9e, #fad0c4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-      padding-bottom: 5px;
-      margin-bottom: 15px;
+      position: relative;
+      letter-spacing: 1px;
     }
 
-    .contact p, .about p, .experience p, .education p {
-      margin: 6px 0;
+    section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+    }
+
+    section p {
+      color: #eee;
       line-height: 1.6;
+      margin-bottom: 10px;
     }
 
-    .skills, .languages, .hobbies {
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 10px;
     }
 
     .tag {
-      background: rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
       padding: 8px 15px;
-      border-radius: 20px;
+      border-radius: 25px;
       font-size: 0.9em;
-      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(0, 200, 255, 0.3);
+      transition: transform 0.3s ease;
     }
 
     .tag:hover {
-      background: linear-gradient(90deg, #ff9966, #ff5e62);
-      transform: scale(1.05);
-    }
-
-    .section-content {
-      padding-left: 10px;
+      transform: scale(1.1);
     }
 
     @media (max-width: 768px) {
-      .resume-container {
+      .resume-box {
         padding: 25px;
       }
 
       .header h1 {
-        font-size: 1.8em;
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 15px;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="resume-container">
+  <!-- NAV MENU -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#languages">Languages</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="resume-box">
     <div class="header">
       <h1>KARTHICK KUMAR M</h1>
       <h3>Junior AI/ML Developer | Former Annotation Quality Analyst</h3>
     </div>
 
-    <div class="section contact">
-      <h2>CONTACT</h2>
-      <div class="section-content">
-        <p>📞 91-9789614136</p>
-        <p>📧 kumarkarthim15@gmail.com</p>
-        <p>🏠 1/397, East Varappalayam, Kadamban Kurichi Post, Karur - 639 113</p>
-      </div>
-    </div>
-
-    <div class="section about">
+    <!-- ABOUT -->
+    <section id="about">
       <h2>ABOUT</h2>
       <p>
-        A thorough and well-organized person looking to transition from Annotation Quality Analyst 
-        to Junior AI/ML Developer. Skilled in data analysis, model training, and quality assurance. 
-        Innovative, artistic, and eager to share ideas and pick up new skills while contributing to impactful projects.
+        A well-organized and analytical professional transitioning from Annotation Quality Analyst 
+        to Junior AI/ML Developer. Skilled in data analysis, labeling, and model training. 
+        Passionate about machine learning, creative problem-solving, and delivering intelligent automation.
       </p>
-    </div>
+    </section>
 
-    <div class="section skills">
+    <!-- SKILLS -->
+    <section id="skills">
       <h2>SKILLS</h2>
-      <div class="section-content">
+      <div class="tags">
         <div class="tag">C</div>
         <div class="tag">Java</div>
         <div class="tag">Python</div>
         <div class="tag">SQL</div>
       </div>
-    </div>
+    </section>
 
-    <div class="section experience">
+    <!-- EXPERIENCE -->
+    <section id="experience">
       <h2>WORK EXPERIENCE</h2>
-      <div class="section-content">
-        <p><strong>Senior Analyst – Objectways Technologies</strong> | 2 Years</p>
-        <p>
-          Assisted R&D teams in improving deep learning model accuracy using data annotation tools like CVAT and LiDAR for ADAS systems. 
-          Created 2D and 3D labels, mentored new hires, ensured quality standards, and collaborated with AWS, Kognic, Alegion, and Luna.
-        </p>
+      <p><strong>Senior Analyst – Objectways Technologies</strong> | 2 Years</p>
+      <p>
+        Enhanced deep learning model accuracy through precise annotation using CVAT & LiDAR tools 
+        for ADAS systems. Mentored new hires, maintained data quality, and collaborated with AWS, Kognic, Alegion, and Luna.
+      </p>
 
-        <br />
+      <p><strong>Annotation Quality Analyst – Telus Digital</strong> | Dec 2023 – Present</p>
+      <p>
+        Ensuring high-fidelity annotated datasets for AI/ML pipelines. Conducting QA across image, text, and video data. 
+        Partnering with data scientists to improve labeling standards and training accuracy.
+      </p>
+    </section>
 
-        <p><strong>Annotation Quality Analyst – Telus Digital</strong> | Dec 2023 – Present</p>
-        <p>
-          Ensured high-quality datasets for AI/ML pipelines through rigorous QA across diverse modalities. 
-          Collaborated with data scientists to refine labeling standards and improve model performance.
-        </p>
-      </div>
-    </div>
-
-    <div class="section education">
+    <!-- EDUCATION -->
+    <section id="education">
       <h2>EDUCATION</h2>
-      <div class="section-content">
-        <p><strong>B.Tech – Information Technology</strong>, VSB Engineering College, Karur (2016–2020)</p>
-        <p><strong>HSC</strong>, Bharani Park Matriculation Higher Secondary School (2015–2016)</p>
-        <p><strong>SSLC</strong>, GHS N. Pudur, Karur (2013–2014)</p>
-      </div>
-    </div>
+      <p><strong>B.Tech – Information Technology</strong>, VSB Engineering College, Karur (2016–2020)</p>
+      <p><strong>HSC</strong>, Bharani Park Matriculation Higher Secondary School (2015–2016)</p>
+      <p><strong>SSLC</strong>, GHS N. Pudur, Karur (2013–2014)</p>
+    </section>
 
-    <div class="section languages">
+    <!-- LANGUAGES -->
+    <section id="languages">
       <h2>LANGUAGES</h2>
-      <div class="section-content">
+      <div class="tags">
         <div class="tag">Tamil</div>
         <div class="tag">English</div>
       </div>
-    </div>
+    </section>
 
-    <div class="section hobbies">
+    <!-- HOBBIES -->
+    <section id="hobbies">
       <h2>HOBBIES</h2>
-      <div class="section-content">
+      <div class="tags">
         <div class="tag">Game Development</div>
         <div class="tag">Animation & Drawing</div>
         <div class="tag">Swimming</div>
       </div>
-    </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>CONTACT</h2>
+      <p>📞 91-9789614136</p>
+      <p>📧 kumarkarthim15@gmail.com</p>
+      <p>🏠 1/397, East Varappalayam, Kadamban Kurichi Post, Karur - 639 113</p>
+    </section>
   </div>
 </body>
 </html>
