@@ -102,6 +102,43 @@
       text-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
 
+    /* Profile Section */
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      background: linear-gradient(45deg, #00f5ff, #ff00cc) border-box;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .download-btn {
+      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,255,255,0.4);
+    }
+
     .card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255,255,255,0.15);
@@ -132,25 +169,13 @@
       100% { transform: rotate(360deg); }
     }
 
-    .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 0 40px rgba(0,255,255,0.3);
-    }
-
     .card > * {
       position: relative;
       z-index: 2;
     }
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li {
-      margin: 8px 0;
-      line-height: 1.6;
-    }
+    ul { list-style: none; padding-left: 0; }
+    ul li { margin: 8px 0; line-height: 1.6; }
 
     footer {
       text-align: center;
@@ -208,11 +233,15 @@
   </header>
 
   <section id="about">
+    <div class="profile-container">
+      <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+      <button class="download-btn" onclick="window.print()">📄 Download Resume</button>
+    </div>
     <h1>KARTHICK KUMAR M</h1>
     <h3>Junior AI/ML Developer | Former Annotation Quality Analyst</h3>
     <div class="card">
       <p>
-        A thorough and well-organized person seeking a project management position. Skilled in data analysis, creative problem-solving, and innovation. Eager to learn and contribute to AI-powered solutions.
+        Passionate and detail-oriented professional with expertise in **AI/ML data pipelines**, **annotation quality**, and **computer vision workflows**. Experienced in curating, validating, and refining datasets that power next-generation autonomous systems and deep learning models.
       </p>
     </div>
   </section>
@@ -230,11 +259,14 @@
     <h2>SKILLS</h2>
     <div class="card">
       <ul>
-        <li>Java</li>
         <li>Python</li>
         <li>SQL</li>
-        <li>C</li>
+        <li>Java</li>
         <li>AI/ML Data Annotation</li>
+        <li>Computer Vision</li>
+        <li>LiDAR & ADAS Labeling</li>
+        <li>Quality Auditing</li>
+        <li>CVAT, Kognic, Alegion, AWS SageMaker</li>
       </ul>
     </div>
   </section>
@@ -250,21 +282,24 @@
 
   <section id="experience">
     <h2>WORK EXPERIENCE</h2>
+
     <div class="card">
       <h3>Senior Analyst — Objectways Technologies (2 Years)</h3>
       <ul>
-        <li>Annotated images, videos, and text using internal tools.</li>
-        <li>Created 2D & 3D labels using LiDAR data for ADAS systems.</li>
-        <li>Used CVAT, AWS, and Kognic tools.</li>
+        <li>Led end-to-end data annotation workflows powering Deep Learning and Computer Vision models for Autonomous Driving (ADAS).</li>
+        <li>Created 2D bounding boxes, 3D cuboids, keypoints, and semantic polygons using LiDAR and CVAT, AWS, Kognic tools.</li>
+        <li>Partnered with AI engineers to improve dataset quality, enforce labeling standards, and enhance model accuracy.</li>
+        <li>Mentored new hires and implemented quality audit frameworks ensuring annotation consistency and precision.</li>
       </ul>
     </div>
 
     <div class="card">
       <h3>Annotation Quality Analyst — Telus Digital (Dec 2023 - Present)</h3>
       <ul>
-        <li>Performed QA on datasets for ML pipelines.</li>
-        <li>Collaborated with engineers to improve accuracy.</li>
-        <li>Ensured high-fidelity scalable data annotation.</li>
+        <li>Performed QA for large-scale AI/ML datasets, ensuring precision and compliance with ethical AI standards.</li>
+        <li>Collaborated with data scientists to refine labeling taxonomies and improve supervised learning outcomes.</li>
+        <li>Implemented Python-based QC automation tools to detect misannotations and accelerate dataset validation.</li>
+        <li>Ensured ISO-quality standards and data privacy compliance across all AI data labeling workflows.</li>
       </ul>
     </div>
   </section>
