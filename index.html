@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +7,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* 🎨 CSS VARIABLES (Dark/Light Theme) */
+    :root {
+      --color-bg-dark: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      --color-bg-light: linear-gradient(135deg, #ffffff, #e3f2fd, #bbdefb);
+      --color-text-dark: #fff;
+      --color-text-light: #222;
+      --color-primary: #00f5ff;
+      --color-secondary: #ff00cc;
+      --color-card-bg: rgba(255, 255, 255, 0.05);
+      --color-border: rgba(255,255,255,0.15);
+    }
+
+    [data-theme="light"] {
+      --color-bg-dark: var(--color-bg-light);
+      --color-text-dark: var(--color-text-light);
+      --color-card-bg: rgba(255, 255, 255, 0.8);
+      --color-border: rgba(0,0,0,0.2);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -16,8 +35,8 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      color: #fff;
+      background: var(--color-bg-dark);
+      color: var(--color-text-dark);
       overflow-x: hidden;
       background-size: 400% 400%;
       animation: gradientShift 10s ease infinite alternate;
@@ -26,6 +45,22 @@
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       100% { background-position: 100% 50%; }
+    }
+
+    /* 🔘 Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 25px;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      border: none;
+      color: #fff;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+      z-index: 1000;
     }
 
     header {
@@ -50,11 +85,12 @@
       justify-content: center;
       gap: 40px;
       padding: 15px 0;
+      flex-wrap: wrap;
     }
 
     nav a {
       text-decoration: none;
-      color: #fff;
+      color: var(--color-text-dark);
       font-weight: 600;
       position: relative;
       text-transform: uppercase;
@@ -69,13 +105,13 @@
       height: 3px;
       bottom: -5px;
       left: 0;
-      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
       transition: width 0.4s ease;
       border-radius: 2px;
     }
 
     nav a:hover {
-      color: #00f5ff;
+      color: var(--color-primary);
     }
 
     nav a:hover::after {
@@ -87,6 +123,7 @@
       opacity: 0;
       transform: translateY(60px);
       transition: all 1.2s ease;
+      container-type: inline-size; /* ✅ Enables container queries */
     }
 
     section.visible {
@@ -95,7 +132,7 @@
     }
 
     h1, h2 {
-      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 15px;
@@ -115,14 +152,14 @@
       height: 130px;
       border-radius: 50%;
       border: 3px solid transparent;
-      background: linear-gradient(45deg, #00f5ff, #ff00cc) border-box;
+      background: linear-gradient(45deg, var(--color-primary), var(--color-secondary)) border-box;
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
       object-fit: cover;
       margin-bottom: 15px;
     }
 
     .download-btn {
-      background: linear-gradient(90deg, #00f5ff, #ff00cc);
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
       color: #fff;
       border: none;
       padding: 12px 25px;
@@ -140,8 +177,8 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
       border-radius: 20px;
       padding: 25px;
       margin-top: 25px;
@@ -152,30 +189,65 @@
       transform-style: preserve-3d;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 180deg, transparent, rgba(0,255,255,0.2), transparent 30%);
-      animation: rotateGlow 6s linear infinite;
-      z-index: 0;
+    /* 💡 Neon Border Animation (Experience Section) */
+    .exp-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,255,255,0.2);
+      box-shadow: 0 0 25px rgba(0,255,255,0.2);
+      transition: 0.5s ease;
+      border-radius: 20px;
+      padding: 25px;
+      margin-top: 25px;
     }
 
-    @keyframes rotateGlow {
+    .neon-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: conic-gradient(from 0deg, var(--color-primary), var(--color-secondary), var(--color-primary));
+      filter: blur(6px);
+      opacity: 0.4;
+      z-index: 1;
+      animation: neonRotate 8s linear infinite;
+    }
+
+    @keyframes neonRotate {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    .card > * {
-      position: relative;
-      z-index: 2;
+    .exp-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: sweepLight 6s infinite;
+      z-index: 0;
+    }
+
+    @keyframes sweepLight {
+      0% { left: -80%; }
+      50% { left: 130%; }
+      100% { left: 130%; }
+    }
+
+    .exp-card:hover {
+      box-shadow: 0 0 40px rgba(0,255,255,0.5);
+      transform: scale(1.03);
     }
 
     ul { list-style: none; padding-left: 0; }
     ul li { margin: 8px 0; line-height: 1.6; }
+
+    /* ♿ Accessibility focus */
+    a:focus, button:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
 
     footer {
       text-align: center;
@@ -185,7 +257,7 @@
       backdrop-filter: blur(10px);
     }
 
-    /* Floating glowing particles */
+    /* 🪶 Floating glowing particles */
     .particle {
       position: absolute;
       border-radius: 50%;
@@ -198,8 +270,13 @@
       100% { transform: translateY(-120vh) scale(1); opacity: 0; }
     }
 
+    /* 📱 Responsive Layout using Container Query */
+    @container (max-width: 600px) {
+      h1 { font-size: 1.4rem; }
+      .profile-pic { width: 100px; height: 100px; }
+    }
+
     @media (max-width: 768px) {
-      nav { flex-wrap: wrap; gap: 20px; }
       section { padding: 90px 6% 50px; }
     }
   </style>
@@ -240,85 +317,28 @@
     <h1>KARTHICK KUMAR M</h1>
     <h3>Junior AI/ML Developer | Former Annotation Quality Analyst</h3>
     <div class="card">
-      <p>
-        Passionate and detail-oriented professional with expertise in **AI/ML data pipelines**, **annotation quality**, and **computer vision workflows**. Experienced in curating, validating, and refining datasets that power next-generation autonomous systems and deep learning models.
-      </p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>CONTACT</h2>
-    <div class="card">
-      <p>📞 91-9789614136</p>
-      <p>✉️ kumarkarthim15@gmail.com</p>
-      <p>🏠 1/397, East Varappalayam, Karur - 639 113</p>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2>SKILLS</h2>
-    <div class="card">
-      <ul>
-        <li>Python</li>
-        <li>SQL</li>
-        <li>Java</li>
-        <li>AI/ML Data Annotation</li>
-        <li>Computer Vision</li>
-        <li>LiDAR & ADAS Labeling</li>
-        <li>Quality Auditing</li>
-        <li>CVAT, Kognic, Alegion, AWS SageMaker</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2>EDUCATION</h2>
-    <div class="card">
-      <p><strong>B.Tech - Information Technology</strong><br>VSB Engineering College, Karur (2016-2020)</p>
-      <p><strong>HSC</strong> - Bharani Park Matric Hr. Sec. School (2015-2016)</p>
-      <p><strong>SSLC</strong> - GHS N.Pudur, Karur (2013-2014)</p>
+      <p>Passionate and detail-oriented professional with expertise in <strong>AI/ML data pipelines</strong>, <strong>annotation quality</strong>, and <strong>computer vision workflows</strong>.</p>
     </div>
   </section>
 
   <section id="experience">
     <h2>WORK EXPERIENCE</h2>
 
-    <div class="card">
+    <div class="exp-card">
+      <div class="neon-border"></div>
       <h3>Senior Analyst — Objectways Technologies (2 Years)</h3>
       <ul>
-        <li>Led end-to-end data annotation workflows powering Deep Learning and Computer Vision models for Autonomous Driving (ADAS).</li>
-        <li>Created 2D bounding boxes, 3D cuboids, keypoints, and semantic polygons using LiDAR and CVAT, AWS, Kognic tools.</li>
-        <li>Partnered with AI engineers to improve dataset quality, enforce labeling standards, and enhance model accuracy.</li>
-        <li>Mentored new hires and implemented quality audit frameworks ensuring annotation consistency and precision.</li>
+        <li>Led end-to-end annotation workflows for ADAS.</li>
+        <li>Collaborated with AI engineers for dataset quality.</li>
       </ul>
     </div>
 
-    <div class="card">
+    <div class="exp-card">
+      <div class="neon-border"></div>
       <h3>Annotation Quality Analyst — Telus Digital (Dec 2023 - Present)</h3>
       <ul>
-        <li>Performed QA for large-scale AI/ML datasets, ensuring precision and compliance with ethical AI standards.</li>
-        <li>Collaborated with data scientists to refine labeling taxonomies and improve supervised learning outcomes.</li>
-        <li>Implemented Python-based QC automation tools to detect misannotations and accelerate dataset validation.</li>
-        <li>Ensured ISO-quality standards and data privacy compliance across all AI data labeling workflows.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="languages">
-    <h2>LANGUAGES</h2>
-    <div class="card">
-      <p>Tamil</p>
-      <p>English</p>
-    </div>
-  </section>
-
-  <section id="hobbies">
-    <h2>HOBBIES</h2>
-    <div class="card">
-      <ul>
-        <li>Game Development</li>
-        <li>Animation and Drawing</li>
-        <li>Swimming</li>
+        <li>Performed QA for large-scale AI datasets.</li>
+        <li>Developed Python-based QC automation tools.</li>
       </ul>
     </div>
   </section>
@@ -327,7 +347,7 @@
     <p>© 2025 Karthick Kumar M | Designed with 💙 HTML, CSS & Animation</p>
   </footer>
 
-  <!-- Scroll + 3D Card Tilt Scripts -->
+  <!-- 🌙 Theme Toggle Script + Scroll Animations -->
   <script>
     // Scroll fade animation
     const sections = document.querySelectorAll("section");
@@ -341,20 +361,16 @@
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll();
 
-    // 3D Tilt effect
-    document.querySelectorAll(".card").forEach(card => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const rotateX = (y / rect.height - 0.5) * 15;
-        const rotateY = (x / rect.width - 0.5) * -15;
-        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-      });
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-      });
-    });
+    // Theme toggle
+    const themeButton = document.createElement("button");
+    themeButton.classList.add("theme-toggle");
+    themeButton.innerText = "🌗 Toggle Theme";
+    themeButton.onclick = () => {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
+    };
+    document.body.appendChild(themeButton);
   </script>
+
 </body>
 </html>
