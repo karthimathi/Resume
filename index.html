@@ -6,6 +6,7 @@
     <title>Karthick Kumar M - Junior AI/ML Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --primary: #00f3ff;
@@ -837,6 +838,171 @@
                 height: 120px;
             }
         }
+
+        /* PDF Styles */
+        #resume-pdf {
+            background: white;
+            color: black;
+            padding: 2rem;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+        }
+
+        #resume-pdf .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #00f3ff;
+        }
+
+        #resume-pdf .pdf-name-title h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #0a0a16;
+            margin-bottom: 0.5rem;
+        }
+
+        #resume-pdf .pdf-name-title h2 {
+            font-size: 1.2rem;
+            color: #9d4edd;
+            font-weight: 500;
+        }
+
+        #resume-pdf .pdf-contact-info p {
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        #resume-pdf .pdf-section {
+            margin-bottom: 1.5rem;
+        }
+
+        #resume-pdf .pdf-section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: #00f3ff;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #9d4edd;
+        }
+
+        #resume-pdf .pdf-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #00f3ff;
+        }
+
+        #resume-pdf .pdf-job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        #resume-pdf .pdf-job-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        #resume-pdf .pdf-company {
+            color: #9d4edd;
+            font-weight: 500;
+        }
+
+        #resume-pdf .pdf-duration {
+            background: #e0e0e0;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        #resume-pdf .pdf-responsibilities {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #resume-pdf .pdf-responsibilities li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        #resume-pdf .pdf-responsibilities li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #00f3ff;
+        }
+
+        #resume-pdf .pdf-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        #resume-pdf .pdf-skill-item {
+            background: #e0e0e0;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        #resume-pdf .pdf-education-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #resume-pdf .pdf-education-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        #resume-pdf .pdf-education-title {
+            font-weight: 600;
+        }
+
+        #resume-pdf .pdf-institution {
+            color: #9d4edd;
+        }
+
+        #resume-pdf .pdf-education-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .spinner i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00f3ff;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -1041,6 +1207,145 @@
         </footer>
     </div>
 
+    <!-- Hidden PDF content -->
+    <div id="resume-pdf" style="display: none;">
+        <div class="pdf-header">
+            <div class="pdf-name-title">
+                <h1>KARTHICK KUMAR M</h1>
+                <h2>JUNIOR AI/ML DEVELOPER</h2>
+            </div>
+            <div class="pdf-contact-info">
+                <p><i class="fas fa-phone"></i> 91-9789614136</p>
+                <p><i class="fas fa-envelope"></i> kumarkarthim15@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 1/397, East Varappalayam, Kadamban Kurichi post, Karur-639 113</p>
+            </div>
+        </div>
+
+        <div class="pdf-section">
+            <h3 class="pdf-section-title">ABOUT</h3>
+            <div class="pdf-card">
+                <p>
+                    A thorough and well-organized professional transitioning from Annotation Quality Analyst to Junior AI/ML Developer. 
+                    Proficient in data analysis, model training pipelines, and AI/ML implementation. With extensive experience in 
+                    creating high-quality annotated datasets for computer vision projects, I'm now focused on developing and 
+                    optimizing machine learning models. Innovative, analytical, and eager to apply my annotation expertise to 
+                    build robust AI systems.
+                </p>
+            </div>
+        </div>
+
+        <div class="pdf-section">
+            <h3 class="pdf-section-title">WORK EXPERIENCE</h3>
+            
+            <div class="pdf-card">
+                <div class="pdf-job-header">
+                    <div>
+                        <div class="pdf-job-title">Annotation Quality Analyst</div>
+                        <div class="pdf-company">Telus Digital</div>
+                    </div>
+                    <div class="pdf-duration">Dec 2023 - Present</div>
+                </div>
+                <ul class="pdf-responsibilities">
+                    <li>Ensuring high-fidelity, scalable annotated datasets for cutting-edge AI/ML pipelines</li>
+                    <li>Conducting rigorous QA on diverse data (image, text, video) to optimize model training accuracy</li>
+                    <li>Leveraging advanced QC frameworks and automation to detect and resolve annotation inconsistencies</li>
+                    <li>Collaborating with data scientists to refine labeling standards and accelerate AI innovation</li>
+                    <li>Gaining hands-on experience with ML model training processes and pipeline optimization</li>
+                </ul>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-job-header">
+                    <div>
+                        <div class="pdf-job-title">Senior Analyst</div>
+                        <div class="pdf-company">Objectways Technologies</div>
+                    </div>
+                    <div class="pdf-duration">2 Years</div>
+                </div>
+                <ul class="pdf-responsibilities">
+                    <li>Spearheaded end-to-end data annotation workflows for complex Computer Vision projects</li>
+                    <li>Utilized in-house annotation platforms to label and enrich multimodal data</li>
+                    <li>Executed 2D bounding box and 3D cuboid annotations for vehicles using LiDAR-based ADAS tools</li>
+                    <li>Designed and annotated lanes, road boundaries, traffic signs using CVAT tool</li>
+                    <li>Implemented metadata tagging adhering to structured labeling protocols</li>
+                    <li>Conducted peer quality evaluations and production audits</li>
+                    <li>Delivered technical onboarding and task orientation for new annotators</li>
+                    <li>Collaborated with global clients including AWS, Kognic, Alegion, and Luna's Urban Mobility Platform</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pdf-section">
+            <h3 class="pdf-section-title">SKILLS</h3>
+            <div class="pdf-card">
+                <div class="pdf-skills-list">
+                    <div class="pdf-skill-item">C</div>
+                    <div class="pdf-skill-item">Java</div>
+                    <div class="pdf-skill-item">Python</div>
+                    <div class="pdf-skill-item">SQL</div>
+                    <div class="pdf-skill-item">Data Analysis</div>
+                    <div class="pdf-skill-item">Quality Assurance</div>
+                    <div class="pdf-skill-item">AI/ML Pipelines</div>
+                    <div class="pdf-skill-item">Computer Vision</div>
+                    <div class="pdf-skill-item">Machine Learning</div>
+                    <div class="pdf-skill-item">Deep Learning</div>
+                    <div class="pdf-skill-item">Data Annotation</div>
+                    <div class="pdf-skill-item">Model Training</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdf-section">
+            <h3 class="pdf-section-title">EDUCATION</h3>
+            <div class="pdf-card">
+                <div class="pdf-education-item">
+                    <div class="pdf-education-title">B.Tech - Information Technology</div>
+                    <div class="pdf-institution">VSB Engineering College</div>
+                    <div class="pdf-education-details">
+                        <span>2016-2020</span>
+                        <span>Karur</span>
+                    </div>
+                </div>
+                <div class="pdf-education-item">
+                    <div class="pdf-education-title">HSC</div>
+                    <div class="pdf-institution">Bharani Park Matriculation HSS</div>
+                    <div class="pdf-education-details">
+                        <span>2015-2016</span>
+                        <span>Vennai malai, Karur</span>
+                    </div>
+                </div>
+                <div class="pdf-education-item">
+                    <div class="pdf-education-title">SSLC</div>
+                    <div class="pdf-institution">GHS N.Pudur</div>
+                    <div class="pdf-education-details">
+                        <span>2013-2014</span>
+                        <span>Karur</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdf-section">
+            <h3 class="pdf-section-title">LANGUAGES</h3>
+            <div class="pdf-card">
+                <p>Tamil, English</p>
+            </div>
+        </div>
+
+        <div class="pdf-section">
+            <h3 class="pdf-section-title">HOBBIES</h3>
+            <div class="pdf-card">
+                <p>Game Development, Animation and Drawing, Swimming</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="spinner" id="loadingSpinner">
+        <i class="fas fa-spinner"></i>
+        <p>Generating PDF...</p>
+    </div>
+
     <script>
         // Create animated particles
         document.addEventListener('DOMContentLoaded', function() {
@@ -1079,10 +1384,42 @@
 
             // Download button functionality
             const downloadBtn = document.getElementById('downloadBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            
             downloadBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                alert('Resume download functionality would be implemented here!');
-                // In a real implementation, this would trigger a PDF download
+                
+                // Show loading spinner
+                loadingSpinner.style.display = 'block';
+                
+                // Get the PDF element
+                const element = document.getElementById('resume-pdf');
+                
+                // Define PDF options
+                const options = {
+                    margin: 10,
+                    filename: 'Karthick_Kumar_Resume.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+                
+                // Generate and download PDF
+                setTimeout(() => {
+                    html2pdf()
+                        .from(element)
+                        .set(options)
+                        .save()
+                        .then(() => {
+                            // Hide loading spinner after PDF is generated
+                            loadingSpinner.style.display = 'none';
+                        })
+                        .catch(err => {
+                            console.error('Error generating PDF:', err);
+                            loadingSpinner.style.display = 'none';
+                            alert('Error generating PDF. Please try again.');
+                        });
+                }, 500);
             });
 
             // Close mobile menu when clicking on a link
