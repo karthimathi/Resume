@@ -839,11 +839,6 @@
             }
         }
 
-        /* PDF Styles */
-        .pdf-only {
-            display: none;
-        }
-
         /* Loading Spinner */
         .spinner {
             display: none;
@@ -1126,446 +1121,43 @@
                 // Show loading spinner
                 loadingSpinner.style.display = 'block';
                 
-                // Create a temporary container for PDF content
-                const pdfContainer = document.createElement('div');
-                pdfContainer.style.padding = '20px';
-                pdfContainer.style.backgroundColor = 'white';
-                pdfContainer.style.color = 'black';
-                pdfContainer.style.fontFamily = "'Exo 2', sans-serif";
-                pdfContainer.style.lineHeight = '1.6';
+                // Define the element to capture (the entire page content)
+                const element = document.querySelector('.container');
                 
-                // Add header
-                const header = document.createElement('div');
-                header.style.display = 'flex';
-                header.style.justifyContent = 'space-between';
-                header.style.alignItems = 'center';
-                header.style.marginBottom = '2rem';
-                header.style.paddingBottom = '1rem';
-                header.style.borderBottom = '2px solid #00f3ff';
-                
-                const nameTitle = document.createElement('div');
-                const name = document.createElement('h1');
-                name.textContent = 'KARTHICK KUMAR M';
-                name.style.fontFamily = "'Orbitron', sans-serif";
-                name.style.fontSize = '2rem';
-                name.style.color = '#0a0a16';
-                name.style.marginBottom = '0.5rem';
-                
-                const title = document.createElement('h2');
-                title.textContent = 'JUNIOR AI/ML DEVELOPER';
-                title.style.fontSize = '1.2rem';
-                title.style.color = '#9d4edd';
-                title.style.fontWeight = '500';
-                
-                nameTitle.appendChild(name);
-                nameTitle.appendChild(title);
-                
-                const contactInfo = document.createElement('div');
-                contactInfo.style.textAlign = 'right';
-                contactInfo.style.fontSize = '0.9rem';
-                
-                const phone = document.createElement('p');
-                phone.innerHTML = '<i class="fas fa-phone"></i> 91-9789614136';
-                
-                const email = document.createElement('p');
-                email.innerHTML = '<i class="fas fa-envelope"></i> kumarkarthim15@gmail.com';
-                
-                const address = document.createElement('p');
-                address.innerHTML = '<i class="fas fa-map-marker-alt"></i> 1/397, East Varappalayam, Kadamban Kurichi post, Karur-639 113';
-                
-                contactInfo.appendChild(phone);
-                contactInfo.appendChild(email);
-                contactInfo.appendChild(address);
-                
-                header.appendChild(nameTitle);
-                header.appendChild(contactInfo);
-                pdfContainer.appendChild(header);
-                
-                // Add About section
-                const aboutSection = document.createElement('div');
-                aboutSection.style.marginBottom = '1.5rem';
-                
-                const aboutTitle = document.createElement('h3');
-                aboutTitle.textContent = 'ABOUT';
-                aboutTitle.style.fontFamily = "'Orbitron', sans-serif";
-                aboutTitle.style.fontSize = '1.3rem';
-                aboutTitle.style.color = '#00f3ff';
-                aboutTitle.style.marginBottom = '1rem';
-                aboutTitle.style.paddingBottom = '0.5rem';
-                aboutTitle.style.borderBottom = '1px solid #9d4edd';
-                
-                const aboutCard = document.createElement('div');
-                aboutCard.style.background = '#f5f5f5';
-                aboutCard.style.borderRadius = '8px';
-                aboutCard.style.padding = '1rem';
-                aboutCard.style.marginBottom = '1rem';
-                aboutCard.style.borderLeft = '4px solid #00f3ff';
-                
-                const aboutText = document.createElement('p');
-                aboutText.textContent = 'A thorough and well-organized professional transitioning from Annotation Quality Analyst to Junior AI/ML Developer. Proficient in data analysis, model training pipelines, and AI/ML implementation. With extensive experience in creating high-quality annotated datasets for computer vision projects, I\'m now focused on developing and optimizing machine learning models. Innovative, analytical, and eager to apply my annotation expertise to build robust AI systems.';
-                
-                aboutCard.appendChild(aboutText);
-                aboutSection.appendChild(aboutTitle);
-                aboutSection.appendChild(aboutCard);
-                pdfContainer.appendChild(aboutSection);
-                
-                // Add Experience section
-                const expSection = document.createElement('div');
-                expSection.style.marginBottom = '1.5rem';
-                
-                const expTitle = document.createElement('h3');
-                expTitle.textContent = 'WORK EXPERIENCE';
-                expTitle.style.fontFamily = "'Orbitron', sans-serif";
-                expTitle.style.fontSize = '1.3rem';
-                expTitle.style.color = '#00f3ff';
-                expTitle.style.marginBottom = '1rem';
-                expTitle.style.paddingBottom = '0.5rem';
-                expTitle.style.borderBottom = '1px solid #9d4edd';
-                
-                expSection.appendChild(expTitle);
-                
-                // First job
-                const job1Card = document.createElement('div');
-                job1Card.style.background = '#f5f5f5';
-                job1Card.style.borderRadius = '8px';
-                job1Card.style.padding = '1rem';
-                job1Card.style.marginBottom = '1rem';
-                job1Card.style.borderLeft = '4px solid #00f3ff';
-                
-                const job1Header = document.createElement('div');
-                job1Header.style.display = 'flex';
-                job1Header.style.justifyContent = 'space-between';
-                job1Header.style.marginBottom = '0.5rem';
-                
-                const job1TitleDiv = document.createElement('div');
-                const job1Title = document.createElement('div');
-                job1Title.textContent = 'Annotation Quality Analyst';
-                job1Title.style.fontWeight = '600';
-                job1Title.style.fontSize = '1.1rem';
-                
-                const job1Company = document.createElement('div');
-                job1Company.textContent = 'Telus Digital';
-                job1Company.style.color = '#9d4edd';
-                job1Company.style.fontWeight = '500';
-                
-                job1TitleDiv.appendChild(job1Title);
-                job1TitleDiv.appendChild(job1Company);
-                
-                const job1Duration = document.createElement('div');
-                job1Duration.textContent = 'Dec 2023 - Present';
-                job1Duration.style.background = '#e0e0e0';
-                job1Duration.style.padding = '0.2rem 0.5rem';
-                job1Duration.style.borderRadius = '10px';
-                job1Duration.style.fontSize = '0.8rem';
-                
-                job1Header.appendChild(job1TitleDiv);
-                job1Header.appendChild(job1Duration);
-                
-                const job1Responsibilities = document.createElement('ul');
-                job1Responsibilities.style.listStyleType = 'none';
-                job1Responsibilities.style.paddingLeft = '0';
-                
-                const responsibilities1 = [
-                    'Ensuring high-fidelity, scalable annotated datasets for cutting-edge AI/ML pipelines',
-                    'Conducting rigorous QA on diverse data (image, text, video) to optimize model training accuracy',
-                    'Leveraging advanced QC frameworks and automation to detect and resolve annotation inconsistencies',
-                    'Collaborating with data scientists to refine labeling standards and accelerate AI innovation',
-                    'Gaining hands-on experience with ML model training processes and pipeline optimization'
-                ];
-                
-                responsibilities1.forEach(resp => {
-                    const li = document.createElement('li');
-                    li.textContent = resp;
-                    li.style.marginBottom = '0.5rem';
-                    li.style.paddingLeft = '1rem';
-                    li.style.position = 'relative';
-                    
-                    const bullet = document.createElement('span');
-                    bullet.textContent = '•';
-                    bullet.style.position = 'absolute';
-                    bullet.style.left = '0';
-                    bullet.style.color = '#00f3ff';
-                    
-                    li.appendChild(bullet);
-                    job1Responsibilities.appendChild(li);
-                });
-                
-                job1Card.appendChild(job1Header);
-                job1Card.appendChild(job1Responsibilities);
-                expSection.appendChild(job1Card);
-                
-                // Second job
-                const job2Card = document.createElement('div');
-                job2Card.style.background = '#f5f5f5';
-                job2Card.style.borderRadius = '8px';
-                job2Card.style.padding = '1rem';
-                job2Card.style.marginBottom = '1rem';
-                job2Card.style.borderLeft = '4px solid #00f3ff';
-                
-                const job2Header = document.createElement('div');
-                job2Header.style.display = 'flex';
-                job2Header.style.justifyContent = 'space-between';
-                job2Header.style.marginBottom = '0.5rem';
-                
-                const job2TitleDiv = document.createElement('div');
-                const job2Title = document.createElement('div');
-                job2Title.textContent = 'Senior Analyst';
-                job2Title.style.fontWeight = '600';
-                job2Title.style.fontSize = '1.1rem';
-                
-                const job2Company = document.createElement('div');
-                job2Company.textContent = 'Objectways Technologies';
-                job2Company.style.color = '#9d4edd';
-                job2Company.style.fontWeight = '500';
-                
-                job2TitleDiv.appendChild(job2Title);
-                job2TitleDiv.appendChild(job2Company);
-                
-                const job2Duration = document.createElement('div');
-                job2Duration.textContent = '2 Years';
-                job2Duration.style.background = '#e0e0e0';
-                job2Duration.style.padding = '0.2rem 0.5rem';
-                job2Duration.style.borderRadius = '10px';
-                job2Duration.style.fontSize = '0.8rem';
-                
-                job2Header.appendChild(job2TitleDiv);
-                job2Header.appendChild(job2Duration);
-                
-                const job2Responsibilities = document.createElement('ul');
-                job2Responsibilities.style.listStyleType = 'none';
-                job2Responsibilities.style.paddingLeft = '0';
-                
-                const responsibilities2 = [
-                    'Spearheaded end-to-end data annotation workflows for complex Computer Vision projects',
-                    'Utilized in-house annotation platforms to label and enrich multimodal data',
-                    'Executed 2D bounding box and 3D cuboid annotations for vehicles using LiDAR-based ADAS tools',
-                    'Designed and annotated lanes, road boundaries, traffic signs using CVAT tool',
-                    'Implemented metadata tagging adhering to structured labeling protocols',
-                    'Conducted peer quality evaluations and production audits',
-                    'Delivered technical onboarding and task orientation for new annotators',
-                    'Collaborated with global clients including AWS, Kognic, Alegion, and Luna\'s Urban Mobility Platform'
-                ];
-                
-                responsibilities2.forEach(resp => {
-                    const li = document.createElement('li');
-                    li.textContent = resp;
-                    li.style.marginBottom = '0.5rem';
-                    li.style.paddingLeft = '1rem';
-                    li.style.position = 'relative';
-                    
-                    const bullet = document.createElement('span');
-                    bullet.textContent = '•';
-                    bullet.style.position = 'absolute';
-                    bullet.style.left = '0';
-                    bullet.style.color = '#00f3ff';
-                    
-                    li.appendChild(bullet);
-                    job2Responsibilities.appendChild(li);
-                });
-                
-                job2Card.appendChild(job2Header);
-                job2Card.appendChild(job2Responsibilities);
-                expSection.appendChild(job2Card);
-                
-                pdfContainer.appendChild(expSection);
-                
-                // Add Skills section
-                const skillsSection = document.createElement('div');
-                skillsSection.style.marginBottom = '1.5rem';
-                
-                const skillsTitle = document.createElement('h3');
-                skillsTitle.textContent = 'SKILLS';
-                skillsTitle.style.fontFamily = "'Orbitron', sans-serif";
-                skillsTitle.style.fontSize = '1.3rem';
-                skillsTitle.style.color = '#00f3ff';
-                skillsTitle.style.marginBottom = '1rem';
-                skillsTitle.style.paddingBottom = '0.5rem';
-                skillsTitle.style.borderBottom = '1px solid #9d4edd';
-                
-                const skillsCard = document.createElement('div');
-                skillsCard.style.background = '#f5f5f5';
-                skillsCard.style.borderRadius = '8px';
-                skillsCard.style.padding = '1rem';
-                skillsCard.style.marginBottom = '1rem';
-                skillsCard.style.borderLeft = '4px solid #00f3ff';
-                
-                const skillsList = document.createElement('div');
-                skillsList.style.display = 'flex';
-                skillsList.style.flexWrap = 'wrap';
-                skillsList.style.gap = '0.5rem';
-                
-                const skills = [
-                    'C', 'Java', 'Python', 'SQL', 'Data Analysis', 'Quality Assurance',
-                    'AI/ML Pipelines', 'Computer Vision', 'Machine Learning', 'Deep Learning',
-                    'Data Annotation', 'Model Training'
-                ];
-                
-                skills.forEach(skill => {
-                    const skillItem = document.createElement('div');
-                    skillItem.textContent = skill;
-                    skillItem.style.background = '#e0e0e0';
-                    skillItem.style.padding = '0.3rem 0.8rem';
-                    skillItem.style.borderRadius = '15px';
-                    skillItem.style.fontSize = '0.8rem';
-                    
-                    skillsList.appendChild(skillItem);
-                });
-                
-                skillsCard.appendChild(skillsList);
-                skillsSection.appendChild(skillsTitle);
-                skillsSection.appendChild(skillsCard);
-                pdfContainer.appendChild(skillsSection);
-                
-                // Add Education section
-                const eduSection = document.createElement('div');
-                eduSection.style.marginBottom = '1.5rem';
-                
-                const eduTitle = document.createElement('h3');
-                eduTitle.textContent = 'EDUCATION';
-                eduTitle.style.fontFamily = "'Orbitron', sans-serif";
-                eduTitle.style.fontSize = '1.3rem';
-                eduTitle.style.color = '#00f3ff';
-                eduTitle.style.marginBottom = '1rem';
-                eduTitle.style.paddingBottom = '0.5rem';
-                eduTitle.style.borderBottom = '1px solid #9d4edd';
-                
-                const eduCard = document.createElement('div');
-                eduCard.style.background = '#f5f5f5';
-                eduCard.style.borderRadius = '8px';
-                eduCard.style.padding = '1rem';
-                eduCard.style.marginBottom = '1rem';
-                eduCard.style.borderLeft = '4px solid #00f3ff';
-                
-                // Education items
-                const eduItems = [
-                    {
-                        title: 'B.Tech - Information Technology',
-                        institution: 'VSB Engineering College',
-                        period: '2016-2020',
-                        location: 'Karur'
-                    },
-                    {
-                        title: 'HSC',
-                        institution: 'Bharani Park Matriculation HSS',
-                        period: '2015-2016',
-                        location: 'Vennai malai, Karur'
-                    },
-                    {
-                        title: 'SSLC',
-                        institution: 'GHS N.Pudur',
-                        period: '2013-2014',
-                        location: 'Karur'
-                    }
-                ];
-                
-                eduItems.forEach((edu, index) => {
-                    const eduItem = document.createElement('div');
-                    eduItem.style.marginBottom = '1rem';
-                    eduItem.style.paddingBottom = '1rem';
-                    eduItem.style.borderBottom = index < eduItems.length - 1 ? '1px solid #ddd' : 'none';
-                    
-                    const eduTitle = document.createElement('div');
-                    eduTitle.textContent = edu.title;
-                    eduTitle.style.fontWeight = '600';
-                    
-                    const eduInstitution = document.createElement('div');
-                    eduInstitution.textContent = edu.institution;
-                    eduInstitution.style.color = '#9d4edd';
-                    
-                    const eduDetails = document.createElement('div');
-                    eduDetails.style.display = 'flex';
-                    eduDetails.style.justifyContent = 'space-between';
-                    eduDetails.style.fontSize = '0.8rem';
-                    eduDetails.style.color = '#666';
-                    
-                    const period = document.createElement('span');
-                    period.textContent = edu.period;
-                    
-                    const location = document.createElement('span');
-                    location.textContent = edu.location;
-                    
-                    eduDetails.appendChild(period);
-                    eduDetails.appendChild(location);
-                    
-                    eduItem.appendChild(eduTitle);
-                    eduItem.appendChild(eduInstitution);
-                    eduItem.appendChild(eduDetails);
-                    
-                    eduCard.appendChild(eduItem);
-                });
-                
-                eduSection.appendChild(eduTitle);
-                eduSection.appendChild(eduCard);
-                pdfContainer.appendChild(eduSection);
-                
-                // Add Languages section
-                const langSection = document.createElement('div');
-                langSection.style.marginBottom = '1.5rem';
-                
-                const langTitle = document.createElement('h3');
-                langTitle.textContent = 'LANGUAGES';
-                langTitle.style.fontFamily = "'Orbitron', sans-serif";
-                langTitle.style.fontSize = '1.3rem';
-                langTitle.style.color = '#00f3ff';
-                langTitle.style.marginBottom = '1rem';
-                langTitle.style.paddingBottom = '0.5rem';
-                langTitle.style.borderBottom = '1px solid #9d4edd';
-                
-                const langCard = document.createElement('div');
-                langCard.style.background = '#f5f5f5';
-                langCard.style.borderRadius = '8px';
-                langCard.style.padding = '1rem';
-                langCard.style.marginBottom = '1rem';
-                langCard.style.borderLeft = '4px solid #00f3ff';
-                
-                const langText = document.createElement('p');
-                langText.textContent = 'Tamil, English';
-                
-                langCard.appendChild(langText);
-                langSection.appendChild(langTitle);
-                langSection.appendChild(langCard);
-                pdfContainer.appendChild(langSection);
-                
-                // Add Hobbies section
-                const hobbiesSection = document.createElement('div');
-                
-                const hobbiesTitle = document.createElement('h3');
-                hobbiesTitle.textContent = 'HOBBIES';
-                hobbiesTitle.style.fontFamily = "'Orbitron', sans-serif";
-                hobbiesTitle.style.fontSize = '1.3rem';
-                hobbiesTitle.style.color = '#00f3ff';
-                hobbiesTitle.style.marginBottom = '1rem';
-                hobbiesTitle.style.paddingBottom = '0.5rem';
-                hobbiesTitle.style.borderBottom = '1px solid #9d4edd';
-                
-                const hobbiesCard = document.createElement('div');
-                hobbiesCard.style.background = '#f5f5f5';
-                hobbiesCard.style.borderRadius = '8px';
-                hobbiesCard.style.padding = '1rem';
-                hobbiesCard.style.marginBottom = '1rem';
-                hobbiesCard.style.borderLeft = '4px solid #00f3ff';
-                
-                const hobbiesText = document.createElement('p');
-                hobbiesText.textContent = 'Game Development, Animation and Drawing, Swimming';
-                
-                hobbiesCard.appendChild(hobbiesText);
-                hobbiesSection.appendChild(hobbiesTitle);
-                hobbiesSection.appendChild(hobbiesCard);
-                pdfContainer.appendChild(hobbiesSection);
-                
-                // Define PDF options
+                // Define PDF options optimized for visual capture
                 const options = {
                     margin: 10,
                     filename: 'Karthick_Kumar_Resume.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                    image: { 
+                        type: 'jpeg', 
+                        quality: 0.98 
+                    },
+                    html2canvas: { 
+                        scale: 2,
+                        useCORS: true,
+                        logging: false,
+                        backgroundColor: '#050510',
+                        allowTaint: true,
+                        removeContainer: true,
+                        onclone: function(clonedDoc) {
+                            // Ensure animations are visible in the capture
+                            const animatedElements = clonedDoc.querySelectorAll('.animated-bg, .shape, .particle');
+                            animatedElements.forEach(el => {
+                                el.style.animationPlayState = 'paused';
+                            });
+                        }
+                    },
+                    jsPDF: { 
+                        unit: 'mm', 
+                        format: 'a4', 
+                        orientation: 'portrait' 
+                    }
                 };
                 
                 // Generate and download PDF
                 setTimeout(() => {
                     html2pdf()
-                        .from(pdfContainer)
+                        .from(element)
                         .set(options)
                         .save()
                         .then(() => {
